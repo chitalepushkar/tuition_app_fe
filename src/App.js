@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import './App.css';
+import StudentList from './Student/StudentList'
+import StudentDetails from './Student/StudentDetails'
+import StudentCreate from './Student/StudentCreate'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+    <Router>
+      <div>
+        <Navbar bg="dark" className="tutor_nav">
+          <Navbar.Brand href="#home">
+            <img
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+        </Navbar>
+      </div>
+
+      <Container>
+        <Switch>
+          <Route exact path="/">
+            <StudentList />
+          </Route>
+          <Route exact path="/students/:id" component={StudentDetails} />
+          <Route exact path="/create_student" component={StudentCreate} />
+        </Switch>
+      </Container>
+    </Router>
+    );
+  }
 }
 
 export default App;
