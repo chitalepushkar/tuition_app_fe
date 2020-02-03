@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from 'react-bootstrap/Form';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 class StudentDetails extends Component {
   constructor(props) {
@@ -46,6 +45,11 @@ class StudentDetails extends Component {
       <Button variant="danger" size="lg" active onClick={this.removeStudent}>
         Remove
       </Button>
+      <Link to={`/students/${this.state.student.id}/edit`}>
+        <Button variant="primary" size="lg" active>
+          Edit
+        </Button>
+      </Link>
     </div>
     );
   }
